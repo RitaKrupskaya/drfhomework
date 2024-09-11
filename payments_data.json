@@ -1,0 +1,1 @@
+[{"model": "users.payment", "pk": 2, "fields": {"user": null, "date_of_payment": "2024-09-11T12:33:08.545Z", "course": 2, "lesson": null, "amount_of_payment": 20000, "payment_type": "Cash"}}, {"model": "users.payment", "pk": 3, "fields": {"user": null, "date_of_payment": "2024-09-11T12:33:37.439Z", "course": null, "lesson": 3, "amount_of_payment": 10000, "payment_type": "Cash"}}]
