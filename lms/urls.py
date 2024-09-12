@@ -1,8 +1,17 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from rest_framework.routers import SimpleRouter
 
 from lms.apps import LmsConfig
-from lms.views import CourseViewSet, LessonDestroyApiView, LessonListApiView, LessonCreateApiView, LessonRetrieveApiView, LessonUpdateApiView
+from lms.views import (
+    CourseViewSet,
+    LessonDestroyApiView,
+    LessonListApiView,
+    LessonCreateApiView,
+    LessonRetrieveApiView,
+    LessonUpdateApiView,
+)
 
 app_name = LmsConfig.name
 
@@ -13,8 +22,14 @@ urlpatterns = [
     path("lessons/", LessonListApiView.as_view(), name="lessons_list"),
     path("lessons/<int:pk>/", LessonRetrieveApiView.as_view(), name="lessons_retrieve"),
     path("lessons/create/", LessonCreateApiView.as_view(), name="lessons_create"),
-    path("lessons/<int:pk>/delete/", LessonDestroyApiView.as_view(), name="lessons_delete"),
-    path("lessons/<int:pk>/update/", LessonUpdateApiView.as_view(), name="lessons_update"),
-]
+    path(
+        "lessons/<int:pk>/delete/",
+        LessonDestroyApiView.as_view(),
+        name="lessons_delete",
+    ),
+    path(
+        "lessons/<int:pk>/update/", LessonUpdateApiView.as_view(), name="lessons_update"
+    ),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += router.urls
